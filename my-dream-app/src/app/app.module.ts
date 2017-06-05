@@ -1,16 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { BackgroundComponent } from './app/background/background.component';
-import { DisplayComponent } from './app/background/display/display.component';
-import { EnquireRecipientComponent } from './app/background/display/enquire-recipient/enquire-recipient.component';
-import { DesiredQuestionComponent } from './app/background/display/desired-question/desired-question.component';
-import { HeaderComponent } from './app/header/header.component';
+import { DisplayComponent } from './app/display/display.component';
+import { HeaderComponent } from './app/display/header/header.component';
+import { BackgroundComponent } from './app/display/background/background.component';
+import { EnquireRecipientComponent } from './app/display/background/display/enquire-recipient/enquire-recipient.component';
+import { DesiredQuestionComponent } from './app/display/background/display/desired-question/desired-question.component';
 
-const appRoutes: Routes
+
+const appRoutes: Routes = [
+  { path: '', component: DisplayComponent },
+  { path: 'enquire', component: EnquireRecipientComponent },
+  { path: 'question', component: DesiredQuestionComponent }
+
+]
 
 @NgModule({
   declarations: [
@@ -23,7 +29,8 @@ const appRoutes: Routes
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
